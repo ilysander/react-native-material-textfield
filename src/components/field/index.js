@@ -247,7 +247,9 @@ export default class TextField extends PureComponent {
       }
     }
   }
-
+  setValue(text){
+    this.setState({ text });
+  }
   onChangeText(text) {
     let { onChangeText } = this.props;
 
@@ -451,11 +453,11 @@ export default class TextField extends PureComponent {
     let helperContainerStyle = {
       flexDirection: 'row',
       height: (title || limit)?
-        titleFontSize * 2:
+        titleFontSize * 2:error?
         focus.interpolate({
           inputRange:  [-1, 0, 1],
           outputRange: [titleFontSize * 2, 8, 8],
-        }),
+        }):4,
     };
 
     let containerProps = {
